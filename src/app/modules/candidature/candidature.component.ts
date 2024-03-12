@@ -113,7 +113,6 @@ export class CandidatureComponent implements OnInit {
       }
     });
 
-    // this.candidature.candidat = CandidatService.getCandidatConnecte();
     this.candidature.detailsCandidatures = this.detailsCandidatures;
     this.candidature.evaluation = this.evaluation;
     this.candidature.user = AuthService.getCandidatConnecte();

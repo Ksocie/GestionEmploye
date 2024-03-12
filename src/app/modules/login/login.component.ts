@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
+    localStorage.removeItem('utilisateurConnecte');
   }
 
   userLogin() : void{

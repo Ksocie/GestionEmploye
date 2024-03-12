@@ -18,6 +18,7 @@ export class AppComponent implements OnInit{
     //la logique pour se connecter et s'authentifier
     this.router.navigate(['/login']);
   }
+
   isUtilisateurConnecte(): boolean {
     return AuthService.getCandidatConnecte() !== null;
   }
