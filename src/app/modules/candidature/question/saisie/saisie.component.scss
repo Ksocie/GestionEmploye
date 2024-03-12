@@ -1,0 +1,14 @@
+:host {
+  ::ng-deep {
+    .saisie-input {
+      border-bottom: solid 1px #3F51B5 !important;
+      border-radius: 20px;
+      width: 70%;
+
+      &:focus {
+        border-bottom: solid 1px #3F51B5 !important;
+        border-radius: 20px;
+      }
+    }
+  }
+}

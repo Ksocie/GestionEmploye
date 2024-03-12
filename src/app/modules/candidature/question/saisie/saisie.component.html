@@ -1,0 +1,9 @@
+<span class="text-3000 font-bold" [ngClass]="{'label-required': question.obligatoire}">{{ question.designation }}</span>
+<div class="row mt-3">
+  <input pInputText
+         [(ngModel)]="valeurSaisie"
+         (input)="notifierChangement($event)"
+         class="saisie-input"
+         id="re-password"
+         type="text">
+</div>

@@ -1,0 +1,14 @@
+<span class="text-3000 font-bold" [ngClass]="{'label-required': question.obligatoire}">{{ question.designation }}</span>
+<div class="row mt-3">
+  <p-multiSelect [options]="question.valeurQuestions"
+                 [(ngModel)]="valeurQuestionSelectionnes"
+                 placeholder="Sélectionner une valeur"
+                 selectedItemsLabel="{0} valeurs sélectionnées"
+                 [maxSelectedLabels]="1"
+                 (onChange)="notifierChangement($event)"
+                 emptyFilterMessage="Aucune valeur trouvée"
+                 [baseZIndex]="1000"
+                 appendTo="body"
+                 optionLabel="valeur">
+  </p-multiSelect>
+</div>

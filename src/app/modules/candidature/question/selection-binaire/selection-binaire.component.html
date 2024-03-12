@@ -1,0 +1,8 @@
+<span class="text-3000 font-bold" [ngClass]="{'label-required': question.obligatoire}">{{ question.designation }}</span>
+<div class="row mt-3">
+  <p-selectButton [options]="question.valeurQuestions"
+                  [(ngModel)]="valeurSelectionne"
+                  optionLabel="valeur"
+                  (onOptionClick)="notifierChangement($event)">
+  </p-selectButton>
+</div>

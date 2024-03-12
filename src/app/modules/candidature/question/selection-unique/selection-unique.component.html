@@ -1,0 +1,10 @@
+<span class="text-3000 font-bold" [ngClass]="{'label-required': question.obligatoire}">{{ question.designation }}</span>
+<div class="row mt-3">
+  <p-dropdown [options]="question.valeurQuestions"
+              [(ngModel)]="valeurSelectionne"
+              placeholder="Sélectionner une valeur"
+              emptyFilterMessage="Aucune valeur trouvée"
+              (onChange)="notifierChangement($event)"
+              optionLabel="valeur">
+  </p-dropdown>
+</div>

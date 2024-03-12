@@ -1,0 +1,66 @@
+<p-toast></p-toast>
+<div class="candidature">
+  <div class="header">
+    <div class="row offre-titre">
+      <span class="block font-bold text-400 text-center">{{evaluation.titre}}</span>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row mt-5">
+      <p-steps [model]="etapes" [(activeIndex)]="index"></p-steps>
+
+      <div class="critere">
+        <div class="col-8 mx-auto py-5" *ngFor="let question of module[index].questions">
+          <app-selection-multiple *ngIf="question.typeQuestion.code === 'SELECTION_MULTIPLE'"
+                                  [question]="question"
+                                  [valeurSelectionne]="formulaireCandidature.get(question.code)?.value"
+                                  (detailsCandidatureChange)="onDetailsCandidatureChange($event, question)">
+          </app-selection-multiple>
+
+          <app-selection-binaire *ngIf="question.typeQuestion.code === 'BINAIRE'"
+                                 [question]="question"
+                                 [valeurSelectionne]="formulaireCandidature.get(question.code)?.value"
+                                 (detailsCandidatureChange)="onDetailsCandidatureChange($event, question)">
+          </app-selection-binaire>
+
+          <app-saisie *ngIf="question.typeQuestion.code === 'SAISIE_LIBRE'"
+                      [question]="question"
+                      [valeurSaisie]="formulaireCandidature.get(question.code)?.value"
+                      (detailsCandidatureChange)="onDetailsCandidatureChange($event, question)">
+          </app-saisie>
+
+          <app-selection-unique *ngIf="question.typeQuestion.code === 'SELECTION_UNIQUE'"
+                                [question]="question"
+                                [valeurSelectionne]="formulaireCandidature.get(question.code)?.value"
+                                (detailsCandidatureChange)="onDetailsCandidatureChange($event, question)">
+          </app-selection-unique>
+        </div>
+      </div>
+
+      <div class="col-8 mx-auto">
+        <div class="row mx-auto">
+          <div class="col-6 mx-auto mt-1 text-left">
+            <button *ngIf="index > 0" pButton class="mt-5 btn-primary" (click)="precedent()">
+              <em class="mr-1 fa fa-arrow-circle-left"></em>
+              Précédent
+            </button>
+          </div>
+          <div *ngIf="index < module.length - 1" class="col-6 mx-auto mt-1 text-right">
+            <button pButton class="mt-5 btn-primary" (click)="suivant()">
+              Suivant
+              <em class="ml-1 fa fa-arrow-circle-right"></em>
+            </button>
+          </div>
+          <div *ngIf="index === module.length - 1" class="col-6 mx-auto mt-1 text-right">
+            <button pButton class="mt-5 btn-primary" (click)="postuler()" [disabled]="formulaireCandidature.invalid">
+              Envoyer
+              <em class="ml-1 fa fa-paper-plane-o"></em>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

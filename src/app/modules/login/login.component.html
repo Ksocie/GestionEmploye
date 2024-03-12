@@ -1,0 +1,25 @@
+<p-toast></p-toast>
+<div class="flex justify-content-center pt-8">
+  <form (ngSubmit)="userLogin()">
+    <p-card [style]="{ width: '360px'}">
+      <ng-template pTemplate="header">
+        <div style="text-align: center;padding-top: 25px;font-weight: bold;font-size:25px;">Login</div>
+      </ng-template>
+      <div class="field">
+        <label for="userLogin" class="form-label label-required">User login</label>
+        <input id="userLogin" required type="text"  class="w-full form-control" name="userLogin"
+               placeholder="Username" [(ngModel)]="user.userLogin"/>
+      </div>
+      <div class="field">
+        <label for="password" class="form-label label-required">Password</label>
+        <input id="password" required type="password"  class="w-full form-control" name="password"
+               placeholder="mot de passe" [(ngModel)]="user.motDepasse"/>
+      </div>
+      <div style="text-align: center">
+        <p-button label="SE CONNECTER" styleClass="w-full" type="submit"></p-button>
+      </div>
+    </p-card>
+  </form>
+</div>
+
+

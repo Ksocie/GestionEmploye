@@ -1,0 +1,28 @@
+:host {
+  ::ng-deep {
+    .candidature {
+      .row {
+        width: 100%;
+      }
+
+      .header {
+        background: #f5f5f5;
+
+        .offre-titre span {
+          font-size: 3rem;
+        }
+      }
+
+      .container .row {
+        .label {
+          font-size: 13px;
+        }
+
+        .critere {
+          height: 500px;
+          overflow: auto;
+        }
+      }
+    }
+  }
+}
