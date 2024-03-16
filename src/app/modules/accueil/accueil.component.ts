@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 
 import {MessageService} from "primeng/api";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {EvaluationService} from "../../services/evaluation.service";
 import {Evaluation} from "../../models/evaluation.model";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-accueil',
@@ -12,28 +13,35 @@ import {Evaluation} from "../../models/evaluation.model";
 })
 export class AccueilComponent implements OnInit {
   evaluations: Evaluation[] = [];
+  code!: string;
+  reference!: string;
 
-  constructor(private evaluationService: EvaluationService,
+  constructor(private route: ActivatedRoute,
+              private evaluationService: EvaluationService,
               private messageService: MessageService,
+              private http: HttpClient,
               private router: Router) { }
 
 
   ngOnInit(): void {
-    this.listeEvaluations();
+    this.route.params.subscribe(params => {
+      this.code = params['code'];
+      this.reference = params['reference'];
+      this.listeEvaluations();
+    });
   }
 
   listeEvaluations():void{
-    this.evaluationService.listeEvaluations().subscribe(
-      (data)=>{
-        this.evaluations = data;
+    this.http.get<Evaluation[]>(`http://localhost:8192/axelor/ws/public/evaluations/${this.code}`).subscribe(
+      (evaluation) => {
+        this.evaluations = evaluation;
       },
-      error => {
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Something went wrong' });
-      }
-    )
+      (error) => {
+        console.error('Erreur lors du chargement des evaluations', error);
+      });
   }
 
-  naviguerVersDetailsEvaluation(code: string) : void {
-    this.router.navigate(['evaluation', code]);
+  naviguerVersDetailsEvaluation(reference: string, code: string) : void {
+    this.router.navigate(['details-evaluation', code , reference]);
   }
 }

@@ -12,6 +12,8 @@ import {Evaluation} from "../../models/evaluation.model";
 export class DetailsEvaluationComponent implements OnInit {
   referenceEvaluation: string = '';
   evaluation!: Evaluation;
+  status!: boolean;
+  code!: string;
 
   constructor(private route: ActivatedRoute,
               private http: HttpClient,
@@ -20,12 +22,13 @@ export class DetailsEvaluationComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.referenceEvaluation = params['reference'];
-      this.loadQuestionnairesParCodeEvaluation();
+      this.code = params['code'];
+      this.chargerDetailsEvaluation();
     });
   }
 
-  loadQuestionnairesParCodeEvaluation(): void {
-    this.http.get<any>(`http://localhost:8192/axelor/ws/public/info/evaluations/${this.referenceEvaluation}`).subscribe(
+  chargerDetailsEvaluation(): void {
+    this.http.get<any>(`http://localhost:8192/axelor/ws/public/info/evaluations/${this.code}/${this.referenceEvaluation}`).subscribe(
       (evaluation) => {
         this.evaluation = evaluation;
       },
@@ -46,5 +49,9 @@ export class DetailsEvaluationComponent implements OnInit {
 
   participer(code : string):void{
     this.router.navigate(['candidature', code]);
+  }
+
+  voirInfo(reference : string) : void {
+    this.router.navigate(['reponse', reference]);
   }
 }

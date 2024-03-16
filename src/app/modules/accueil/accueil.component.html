@@ -1,6 +1,7 @@
 <div class="p-grid flex justify-content-center">
   <div *ngFor="let evaluation of evaluations" class="p-col-12 p-md-4" style="display: inline-block">
-    <p-card header="{{evaluation.titre}}" (click)="naviguerVersDetailsEvaluation(evaluation.reference)" class="text-center">
+    <p-card header="{{evaluation.titre}}"
+            (click)="naviguerVersDetailsEvaluation(evaluation.reference, evaluation.user.code )" class="text-center cursor-pointer">
       <ng-container class="text-center">
         <p>{{evaluation.description}} </p>
       </ng-container>

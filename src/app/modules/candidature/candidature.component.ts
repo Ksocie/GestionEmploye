@@ -12,6 +12,7 @@ import {Module} from "../../models/module.model";
 import {CandidatureService} from "../../services/candidature.service";
 import {AuthService} from "../../services/auth.service";
 import {DatePipe} from "@angular/common";
+import {format} from "date-fns";
 
 @Component({
   selector: 'app-questionnaire',
@@ -116,7 +117,10 @@ export class CandidatureComponent implements OnInit {
     this.candidature.detailsCandidatures = this.detailsCandidatures;
     this.candidature.evaluation = this.evaluation;
     this.candidature.user = AuthService.getCandidatConnecte();
-    this.candidature.date = Date.now().toString();
+    const date = new Date();
+    // Formater la date dans le format "dd-MM-yyyy HH:mm"
+    const dateFormatee = format(date, 'dd-MM-yyyy HH:mm');
+    this.candidature.date = dateFormatee;
 
     this.candidatureService.creer(this.candidature).subscribe({
       next: () => {
@@ -135,14 +139,4 @@ export class CandidatureComponent implements OnInit {
       { severity: 'success', summary: 'Evaluation envoyé', detail: 'Votre évaluation sera analysée. Merci!' }
     );
   }
-
-  // isCandidatureExiste(): void {
-  //   this.candidatureService.isCandidatureExiste(this.reference, this.candidatConnecte.id).subscribe({
-  //     next: (data) => {
-  //       if (data) {
-  //         this.navigationService.goTo('detail-offre/' + this.reference);
-  //       }
-  //     }
-  //   });
-  // }
 }

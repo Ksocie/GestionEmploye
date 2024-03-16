@@ -28,8 +28,11 @@
             </ng-template>
           </p-table>
         </div>
-        <div style="text-align: center">
+        <div style="text-align: center" *ngIf="!evaluation.informerStatut">
           <button pButton class="mt-5 btn-primary btn-lg" (click)="participer(evaluation.reference)">Participer</button>
+        </div>
+        <div style="text-align: center" *ngIf="evaluation.informerStatut">
+          <button pButton class="mt-5 btn-primary btn-lg" (click)="voirInfo(evaluation.reference)">Voir Mes Réponses</button>
         </div>
       </div>
     </div>

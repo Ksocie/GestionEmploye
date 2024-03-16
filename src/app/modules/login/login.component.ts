@@ -30,13 +30,17 @@ export class LoginComponent implements OnInit {
         this.messageService.add(
           { severity: 'success', summary: 'Authentification réussie', detail: 'Redirection en cours...' }
         );
-        this.router.navigate(['/accueil']);
+        this.naviguerVersAccueil(user.code);
       },
       error=> {
         this.messageService.add(
           { severity: 'error', summary: 'Authentification échouée', detail: 'Veuillez vérifier vos accès' }
         );
       })
+  }
+
+  naviguerVersAccueil(code: string) : void {
+    this.router.navigate(['accueil', code]);
   }
 
 }

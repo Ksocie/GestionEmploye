@@ -1,0 +1,28 @@
+<div class="detail-offre">
+  <div class="header">
+    <div class="row offre-titre">
+      <span class="block font-bold text-400 text-center">{{evaluation.titre}}</span>
+    </div>
+  </div>
+  <div class="container mt-5">
+    <div class="row">
+      <p-table  [value]="evaluation.reponseEvaluation" [tableStyle]="{'min-width': '50rem'}">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Les questions répondues</th>
+            <th>Mes Réponses</th>
+            <th>Notes Obtenues</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-reponseEvaluation>
+          <tr>
+            <td>{{ reponseEvaluation.question }}</td>
+            <td>{{ reponseEvaluation.reponse }}</td>
+            <td>{{ reponseEvaluation.note }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+
+</div>

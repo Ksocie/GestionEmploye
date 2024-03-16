@@ -17,7 +17,9 @@ import { LoginModule } from "./modules/login/login.module";
 import { CandidatureModule } from "./modules/candidature/candidature.module";
 import {MessageService, SharedModule} from "primeng/api";
 import { AppRoutingModule } from "./app-routing.module";
-import {SelectionBinaireComponent} from "./modules/candidature/question/selection-binaire/selection-binaire.component";
+import { ReponseEvaluationModule } from "./modules/reponse-evaluation/reponse-evaluation.module";
+
+
 
 
 @NgModule({
@@ -40,7 +42,8 @@ import {SelectionBinaireComponent} from "./modules/candidature/question/selectio
     CandidatureModule,
     SharedModule,
     AppRoutingModule,
-    LoginModule
+    LoginModule,
+    ReponseEvaluationModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

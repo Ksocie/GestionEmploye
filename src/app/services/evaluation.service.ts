@@ -13,8 +13,8 @@ export class EvaluationService {
   constructor(private httpClient: HttpClient) { }
 
 
-  listeEvaluations(): Observable<Evaluation[]>{
-    return this.httpClient.get<Evaluation[]>(`${this.baseUrl}/evaluations`);
+  listeEvaluations( id : number): Observable<Evaluation[]>{
+    return this.httpClient.get<Evaluation[]>(`${this.baseUrl}/evaluations/${id}`);
   }
 
   // infoEvaluations(reference: string): Observable<EvaluationVO>{

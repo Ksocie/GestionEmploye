@@ -9,14 +9,22 @@ const routes: Routes = [
 	{
     path: '',
 		children: [
-      {path: '', redirectTo: '/accueil', pathMatch: 'full'},
+      // {path: '', redirectTo: '/accueil/:id', pathMatch: 'full'},
 			{
-				path: 'evaluation/:reference',
+				path: 'details-evaluation/:code/:reference',
 				loadChildren: () => import('./modules/details-evaluation/details-evaluation.module').then(m => m.DetailsEvaluationModule)
 			},
       {
+        path: 'accueil/:code',
+        loadChildren: () => import('./modules/accueil/accueil-routing.module').then(m => m.AccueilRoutingModule)
+      },
+      {
         path: 'candidature/:code',
         loadChildren: () => import('./modules/candidature/candidature.module').then(m => m.CandidatureModule)
+      },
+      {
+        path: 'reponse/:reference',
+        loadChildren: () => import('./modules/reponse-evaluation/reponse-evaluation.module').then(m => m.ReponseEvaluationModule)
       }
 		]
 	},
