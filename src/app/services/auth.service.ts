@@ -24,7 +24,7 @@ export class AuthService {
     localStorage.setItem('utilisateurConnecte', JSON.stringify(user));
   }
 
-  static getCandidatConnecte(): User | null {
+  getCandidatConnecte(): User | null {
     const item = localStorage.getItem('utilisateurConnecte');
     if(item){
       return JSON.parse(item);

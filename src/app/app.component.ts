@@ -11,7 +11,8 @@ import {AuthService} from "./services/auth.service";
 export class AppComponent implements OnInit{
   title = 'GestionEmploye';
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private authService: AuthService) {
   }
 
   ngOnInit() {
@@ -20,7 +21,7 @@ export class AppComponent implements OnInit{
   }
 
   isUtilisateurConnecte(): boolean {
-    return AuthService.getCandidatConnecte() !== null;
+    return this.authService.getCandidatConnecte() !== null;
   }
 
   isLogin(): boolean {
@@ -28,13 +29,13 @@ export class AppComponent implements OnInit{
   }
 
   goToConnexion(): void {
-    const utilisateurConnecte = AuthService.getCandidatConnecte();
+    const utilisateurConnecte = this.authService.getCandidatConnecte();
     if (utilisateurConnecte) {
       localStorage.removeItem('utilisateurConnecte');
       this.router.navigate(['/login']);
     }
     else {
-      this.router.navigate(['/accueil']);
+      this.router.navigate(['/home']);
     }
   }
 }

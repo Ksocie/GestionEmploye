@@ -7,11 +7,11 @@ import {Evaluation} from "../../models/evaluation.model";
 import {HttpClient} from "@angular/common/http";
 
 @Component({
-  selector: 'app-accueil',
-  templateUrl: './accueil.component.html',
-  styleUrls: ['./accueil.component.scss']
+  selector: 'app-evaluation',
+  templateUrl: './evaluation.component.html',
+  styleUrls: ['./evaluation.component.scss']
 })
-export class AccueilComponent implements OnInit {
+export class EvaluationComponent implements OnInit {
   evaluations: Evaluation[] = [];
   code!: string;
   reference!: string;

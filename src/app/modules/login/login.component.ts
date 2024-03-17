@@ -30,7 +30,8 @@ export class LoginComponent implements OnInit {
         this.messageService.add(
           { severity: 'success', summary: 'Authentification réussie', detail: 'Redirection en cours...' }
         );
-        this.naviguerVersAccueil(user.code);
+        // this.naviguerVersAccueil(user.code);
+        this.naviguerVersHome();
       },
       error=> {
         this.messageService.add(
@@ -40,7 +41,10 @@ export class LoginComponent implements OnInit {
   }
 
   naviguerVersAccueil(code: string) : void {
-    this.router.navigate(['accueil', code]);
+    this.router.navigate(['evaluation', code]);
   }
 
+  naviguerVersHome() : void {
+    this.router.navigate(['home']);
+  }
 }

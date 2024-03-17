@@ -36,7 +36,8 @@ export class CandidatureComponent implements OnInit {
               private http: HttpClient,
               private evaluationService: EvaluationService,
               private messageService: MessageService,
-              private candidatureService: CandidatureService) {
+              private candidatureService: CandidatureService,
+              private authService: AuthService) {
   }
 
   ngOnInit(): void {
@@ -116,7 +117,7 @@ export class CandidatureComponent implements OnInit {
 
     this.candidature.detailsCandidatures = this.detailsCandidatures;
     this.candidature.evaluation = this.evaluation;
-    this.candidature.user = AuthService.getCandidatConnecte();
+    this.candidature.user = this.authService.getCandidatConnecte();
     const date = new Date();
     // Formater la date dans le format "dd-MM-yyyy HH:mm"
     const dateFormatee = format(date, 'dd-MM-yyyy HH:mm');
@@ -125,7 +126,7 @@ export class CandidatureComponent implements OnInit {
     this.candidatureService.creer(this.candidature).subscribe({
       next: () => {
         this.notifierEnregistrement();
-        setTimeout(() => this.router.navigate(['/accueil']), 2000);
+        setTimeout(() => this.router.navigate(['/home']), 2000);
       }
     });
   }

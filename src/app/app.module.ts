@@ -11,7 +11,7 @@ import { ButtonModule } from "primeng/button";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MenubarModule } from "primeng/menubar";
 import { TableModule } from "primeng/table";
-import { AccueilModule } from "./modules/accueil/accueil.module";
+import { EvaluationModule } from "./modules/evaluation/evaluation.module";
 import { DetailsEvaluationModule } from "./modules/details-evaluation/details-evaluation.module";
 import { LoginModule } from "./modules/login/login.module";
 import { CandidatureModule } from "./modules/candidature/candidature.module";
@@ -37,7 +37,7 @@ import { ReponseEvaluationModule } from "./modules/reponse-evaluation/reponse-ev
     BrowserAnimationsModule,
     MenubarModule,
     TableModule,
-    AccueilModule,
+    EvaluationModule,
     DetailsEvaluationModule,
     CandidatureModule,
     SharedModule,

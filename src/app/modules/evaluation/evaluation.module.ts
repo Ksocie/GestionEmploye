@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AccueilRoutingModule } from 'src/app/modules/accueil/accueil-routing.module';
-import { AccueilComponent } from 'src/app/modules/accueil/accueil.component';
+import { EvaluationRoutingModule } from 'src/app/modules/evaluation/evaluation-routing.module';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { DataViewModule } from 'primeng/dataview';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MultiSelectModule } from 'primeng/multiselect';
 import {CardModule} from "primeng/card";
+import {EvaluationComponent} from "./evaluation.component";
 
 
 @NgModule({
   declarations: [
-    AccueilComponent
+    EvaluationComponent
   ],
   imports: [
     CommonModule,
-    AccueilRoutingModule,
+    EvaluationRoutingModule,
     InputTextModule,
     ButtonModule,
     DataViewModule,
@@ -26,5 +26,5 @@ import {CardModule} from "primeng/card";
     CardModule
   ]
 })
-export class AccueilModule {
+export class EvaluationModule {
 }
